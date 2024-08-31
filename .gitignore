@@ -1,0 +1,46 @@
+# 파이썬 관련
+__pycache__/
+*.py[cod]
+*.so
+
+# 가상 환경
+venv/
+env/
+.env
+
+# IDE 관련
+.vscode/
+.idea/
+.벤치/
+.tmp/
+
+# 로그 파일
+*.log
+
+# 데이터베이스
+*.db
+*.sqlite3
+
+# 운영체제 관련
+.DS_Store
+Thumbs.db
+
+# 임시 파일
+*.tmp
+*.bak
+*.swp
+
+# 개인 설정 파일
+config.ini
+
+# 빌드 결과물
+build/
+dist/
+
+# 의존성 디렉토리
+node_modules/
+
+# 기타
+*.csv
+*.json
+*.xlsx

@@ -1,0 +1,19 @@
+Your task is extracting metadata from unstructured text data as follows and return result in JSON format only:
+"""
+def extract_metadata(text: str) -> Dict[str, Any]:
+# Extract metadata from unstructured text data.
+    Args: text(str): The unstructured text data to extract metadata from.
+    Return: Dict[str, Any]: A dictionary containing extracted metadata(Name, age, prescription date, medication name, medication dosage, prescription days).
+
+# result format(DO NOT USE CODE BLOCKS)
+"Name" : "Not Found",
+"age" : "Not Found",
+"prescription_date" : "2021-01-01",
+"medication_name" : ["founded medication1", "founded medication2", "founded medication3", ...]
+"medication_dosage" : "founded medication1" : "dosage1", "founded medication2" : "dosage2", "founded medication3" : "dosage3", ...
+"prescription_days" : 7
+"""
+
+# Get result
+result = extract_metadata({text})
+return result

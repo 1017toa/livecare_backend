@@ -1,0 +1,37 @@
+**Your task is to summarize documents that contain warnings about the drug and the results of clinical trials. This summary will be used by doctors when treating patients who take the drug.**
+
+**The document you need to summarize looks like this:** 
+{DOCUMENT}
+
+**Reference material:**
+{REFERENCE_DATA}
+
+**Follow these guidelines when summarizing this document:**
+
+1. **Summarize only the content that is relevant to the following format:**
+    1) Precautions
+    2) Adverse Reactions
+    3) Drug interactions
+    4) Precautions while taking
+    5) Patient groups requiring special attention
+    6) Clinical tests
+
+2. **Focus on information that clearly shows cause and effect.** Prioritize information that clearly describes the drug's effects, side effects, and the relationship between them.
+
+3. **Prioritize information that is essential to the physician.** Select information that can be used immediately in patient care.
+
+4. **Emphasize side effects and clinical trial results** - these are the most important considerations for doctors when prescribing medicines to patients.
+
+5. **Focus on capturing as much key information as possible without cutting corners.** It's okay to write as long as one or two A4 sheets if necessary.
+
+6. **Use only facts from the documentation.** Don't include speculation or personal opinions.
+
+7. **Omit simple observations that have no obvious consequences.**
+
+8. **Utilize the provided reference material to enhance your summary.** Incorporate relevant information from the reference material to provide a more comprehensive and accurate summary. Use this additional context to clarify or expand on points from the main document where appropriate.
+
+9. **When using information from the reference material, clearly indicate its source.** This will help doctors distinguish between information from the main document and supplementary details from the reference material.
+
+10. **If there are any discrepancies between the main document and the reference material, highlight these in your summary.** This will alert doctors to potential areas of uncertainty or ongoing research.
+
+**Now summarize the document according to the instructions given, integrating relevant information from the reference material to create a comprehensive and informative summary for physicians.**

@@ -1,0 +1,36 @@
+You are tasked with creating a medical chart based on a conversation transcript between a patient and a doctor. The conversation transcript will be provided to you in Korean. Your goal is to extract relevant information from the conversation and organize it into a structured medical chart.
+
+Here is the conversation transcript:
+
+<conversation_transcript>
+{CONVERSATION_TRANSCRIPT}
+</conversation_transcript>
+
+Please create a medical chart with the following 9 sections:
+
+1. 주호소 (Chief Complaint)
+2. 과거력 (Past Medical History)
+3. 진료 이력 (Medical Visit History)
+4. 현재 병력 (Present Illness)
+5. V/S (Vital Signs, 생체 신호)
+6. P.Ex. (Physical Examination, 신체 검사)
+7. 진단 (Diagnosis)
+8. 처방 (Prescription)
+9. 환자 교육 (Patient Education)
+
+For each section:
+1. Extract relevant information from the conversation transcript.
+2. Summarize the information concisely and clearly.
+3. Use bullet points or short sentences for clarity when appropriate.
+4. Include specific details such as dates, measurements, and medical terms when available.
+
+Format your output as follows:
+- Use Korean for both section titles and content.
+- Begin each section with the Korean title in square brackets, e.g., [주호소]
+- Separate each section with a blank line.
+
+If certain information is not available in the conversation transcript for a particular section, indicate this by writing "정보 없음" (No information) under the section title.
+
+Remember to maintain patient confidentiality by not including any identifying information beyond what is necessary for the medical chart.
+
+Please provide your complete medical chart based on the conversation transcript.

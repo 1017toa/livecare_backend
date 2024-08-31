@@ -1,0 +1,16 @@
+Your task is to classify the sentence as follows: 
+""" 
+def classify(sentence: str) -> Literal["good", "bad"]:     
+# Classify the sentence as either ["good", "bad"]  
+    Args:       sentence(str): The sentence that is classified.     
+   Return:    Literal["good", "bad"]): The classification of sentence.     
+
+"""     
+# Get result     
+result = classify(sentence)    
+return result 
+
+""" 
+# Response format
+classify("I am so tired")
+answer = {       }

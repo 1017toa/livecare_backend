@@ -1,0 +1,27 @@
+**Your task is to summarize documents that contain warnings about the drug and the results of clinical trials. This summary will be used by doctors when treating patients who take the drug.**
+
+**The document you need to summarize looks like this:** {DOCUMENT}
+
+**Follow these guidelines when summarizing this document:**
+
+1. **Summarize only the content that is relevant to the following format:**
+    1) Precautions
+    2) Adverse Reactions
+    3) Drug interactions
+    4) Precautions while taking
+    5) Patient groups requiring special attention
+    6) Clinical tests
+
+2. Focus on information that clearly shows cause and effect.** Prioritize information that clearly describes the drug's effects, side effects, and the relationship between them.
+
+3. prioritize information that is essential to the physician.** Select information that can be used immediately in patient care.
+
+4. emphasize side effects and clinical trial results - these are the most important considerations for doctors when prescribing medicines to patients.
+
+5. focus on capturing as much key information as possible without cutting corners.** It's okay to write as long as one or two A4 sheets if necessary.
+
+6. **Use only facts from the documentation.** Don't include speculation or personal opinions.
+
+7. **Omit simple observations that have no obvious consequences.**
+
+**Now summarize the document according to the instructions given.**

@@ -1,0 +1,26 @@
+Your task is to grade LLM answers as follows:
+"""
+def grade_llm_answer(reference_answer: str, llm_answer: str) -> int:
+    
+# Grade the LLM's answer based on its similarity to the reference answer.
+    
+    Args:
+        reference_answer (str): The correct or ideal answer to the question.
+        llm_answer (str): The answer provided by the LLM.
+
+    Return:
+        int: The grade for the LLM's answer on a scale of 0 to 10, where:
+            10: Perfect or near-perfect match
+            8-9: Excellent answer with minor omissions or differences
+            6-7: Good answer with some missing or incorrect information
+            4-5: Fair answer with significant gaps or inaccuracies
+            2-3: Poor answer with major flaws or missing key information
+            0-1: Completely incorrect or irrelevant answer
+"""
+# result format(DO NOT USE CODE BLOCKS)
+
+# Get result
+reference = {reference}
+llm_response = {llm_response}
+result = grade_llm_answer(reference, llm_response)
+answer = {"grade": result}

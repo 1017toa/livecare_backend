@@ -1,0 +1,23 @@
+Your task is extracting metadata from unstructured text data as follows and return result in JSON format only:
+"""
+def extract_metadata(text: str) -> Dict[str, Any]:
+# Extract metadata from unstructured text data.
+    Args: 
+        text(str): The unstructured text data to extract metadata from.
+    Return: Dict[str, Any]: A dictionary containing extracted patient's metadata (Name, age, gender).
+
+# result format (DO NOT USE CODE BLOCKS)
+"name": "Not Found",
+"age": "Not Found",
+"gender": "Not Found"
+"""
+
+# Get result
+result = extract_metadata(text={text})
+return result
+
+Notes:
+- For the format “yymmdd-2xxxxxx”, “yymmdd” is the date of birth and the number after the “yymmdd-” represents the gender: 1,3 for male, 2,4 for female.
+- Gender is typically denoted as "남" (male) or "여" (female).
+- Age can be in various formats such as "만 00세", "00", "19xx년생", or "yymmdd-2xxxxxx".
+- Age is often written close to gender information.
