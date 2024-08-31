@@ -13,7 +13,6 @@ from dotenv import load_dotenv
 import os
 from loguru import logger
 import sys
-from 벤치.clova_speech_client import transcribe_audio
 import time
 from functools import wraps, partial
 import aiohttp
@@ -65,9 +64,10 @@ load_dotenv()
 logging.langsmith("livecare")
 
 # CORS 설정
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 실제 운영 환경에서는 구체적인 origin을 지정해야 합니다
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
