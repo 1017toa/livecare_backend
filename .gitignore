@@ -11,7 +11,7 @@ env/
 # IDE 관련
 .vscode/
 .idea/
-.벤치/
+벤치/
 .tmp/
 
 # 로그 파일
