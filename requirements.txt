@@ -1,3 +1,4 @@
+Cython
 aiofiles
 aiohappyeyeballs
 aiohttp
@@ -126,3 +127,4 @@ uvicorn
 wget
 win32-setctime
 yarl
+
