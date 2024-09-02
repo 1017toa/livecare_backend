@@ -1,5 +1,6 @@
 import asyncio
 import hashlib
+from clova_speech_client import transcribe_audio
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -20,10 +21,10 @@ import time
 from database import (
     create_tables,
     insert_drug_info,
-    insert_medical_chart,
+    insert_voice_medical_chart,
     get_medical_chart_by_hash,
-    get_medical_chart_by_id,
     insert_medical_chart_from_prescription,
+    insert_voice_medical_chart,
     update_medical_chart, create_connection_async,
     create_connection_sync
 )
@@ -138,39 +139,38 @@ async def transcribe_audio_endpoint(file: UploadFile = File(...)):
     try:
         file_content = await file.read()
         file_hash = calculate_file_hash(file_content)
+
+        # S3에 파일 업로드 (비동기적으로 실행하고 결과를 기다리지 않음)
+        asyncio.create_task(upload_file_to_s3(file_content, file.filename))
         
         # 데이터베이스 연결
-        conn = create_connection()
-        if conn is not None:
-            create_tables(conn)
+        async with create_connection_async() as conn:
+            # if conn is not None:
+                
+            #     # 해시로 기존 의료 차트 검색
+            #     existing_chart = get_medical_chart_by_hash(conn, file_hash)
+            #     if existing_chart:
+            #         logger.info("중복된 파일이 감지되어 기존 결과를 반환합니다.")
+            #         return {"id": existing_chart['id'], "content": existing_chart['content']}
             
-            # 해시로 기존 의료 차트 검색
-            existing_chart = get_medical_chart_by_hash(conn, file_hash)
-            if existing_chart:
-                logger.info("중복된 파일이 감지되어 기존 결과를 반환합니다.")
-                conn.close()
-                return {"id": existing_chart['id'], "content": existing_chart['content']}
-        
-        # 새로운 파일인 경우 처리 계속
-        temp_file_path = f"tmp/{file.filename}"
-        with open(temp_file_path, "wb") as temp_file:
-            temp_file.write(file_content)
-        transcribe_result = transcribe_audio(temp_file_path)
-        logger.info(f"음성 파일 전사 성공: {file.filename}")
-        final_result = await langchain_handler.create_medical_chart(transcribe_result['text'])
-        logger.info(f"의료 차트 생성 성공: {file.filename}")
-        
-        file_metadata = {
-            'file_name': file.filename,
-            'file_size': len(file_content),
-            'file_type': file.content_type,
-            'file_hash': file_hash
-        }
-        
-        # 데이터베이스에 저장
-        if conn is not None:
-            chart_id = insert_medical_chart(conn, final_result, file_metadata)
-            conn.close()
+            # 새로운 파일인 경우 처리 계속
+            temp_file_path = f"tmp/{file.filename}"
+            with open(temp_file_path, "wb") as temp_file:
+                temp_file.write(file_content)
+            transcribe_result = transcribe_audio(temp_file_path)
+            logger.info(f"음성 파일 전사 성공: {file.filename}")
+            final_result = await langchain_handler.create_medical_chart(transcribe_result['text'])
+            logger.info(f"의료 차트 생성 성공: {file.filename}")
+            
+            file_metadata = {
+                'file_name': file.filename,
+                'file_size': len(file_content),
+                'file_type': file.content_type,
+                'file_hash': file_hash
+            }
+            
+            # 데이터베이스에 저장
+            chart_id = await insert_voice_medical_chart(conn, 0, final_result)
             if chart_id:
                 final_result = {"id": chart_id, "content": final_result}
             else:

@@ -1,0 +1,50 @@
+Please complete a comprehensive report for the patient's Multidisciplinary Care in Korean language based on the following information:
+
+[Patient Information]
+{PATIENT_INFO}
+
+[List of current medications]
+{DRUG_INFO}
+
+Based on the above information, please create a comprehensive report that includes the following items:
+
+## 1. Drug interaction analysis and alerts.
+### 1.1 Currently Taking Medications
+- List the medications you are currently taking by product name (ingredient name).
+### 1.2 Potential interactions
+- Analyze potential interactions between your medications.
+- If there are any drugs or ingredients that should not be taken together, clearly warn and explain why.
+- Categorize the severity of the interaction as 'mild', 'moderate', or 'severe'.
+- If necessary, include suggestions for alternative medications or dose adjustments.
+### 1.3 Summary
+- Summarize based on the important points.
+
+## 2. Assess the patient's condition
+### 2.1 Estimate health status
+- Estimate the patient's health status based on current medications.
+### 2.2 Medications and their effects
+- Briefly describe the symptoms or conditions that each medication is intended to treat.
+### 2.3 Anticipated side effects
+- List any side effects you expect from taking the medication or symptoms to watch out for.
+### 2.4 Comprehensive assessment
+- Provide a comprehensive assessment of the patient's overall health.
+
+## 3. Precautions and guidelines for your practice
+### 3.1 Precautions by specialty
+- List precautions for each medical specialty (e.g., internal medicine, neurology, psychiatry, etc.).
+### 3.2 Monitoring items
+- List items that require special attention or monitoring when administering medications.
+### 3.3 Lifestyle and dietary recommendations
+- Include any recommendations for the patient's lifestyle or diet.
+### 3.4 Follow-up suggestions
+- Suggest items for future testing or follow-up.
+
+## 4. Overall recommendations
+### 4.1 Treatment plan suggestions
+- Make suggestions for the patient's overall treatment plan.
+### 4.2 Suggestions for interprofessional collaboration
+- Highlight areas that require a multidisciplinary approach, and suggest how professionals in each field should work together.
+### 4.3 Education
+- Summarize key information or education that should be provided to patients and caregivers.
+
+This report should help healthcare providers gain a comprehensive understanding of the patient's condition and develop a safe and effective treatment plan. All information should be based on the latest medical knowledge and guidelines, and recommend additional specialist advice if necessary.

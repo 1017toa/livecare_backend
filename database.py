@@ -68,6 +68,11 @@ async def create_tables(conn):
             (id INTEGER PRIMARY KEY AUTOINCREMENT,
              patient_id INTEGER,
              content TEXT);
+                                 
+            CREATE TABLE IF NOT EXISTS voice_medical_charts
+            (id INTEGER PRIMARY KEY AUTOINCREMENT,
+             patient_id INTEGER,
+             content TEXT);                                 
         ''')
         await conn.commit()
         logger.info("테이블 생성 완료: patients, drug_info, medical_charts")
@@ -96,20 +101,6 @@ async def insert_prescription(conn, prescription_data, file_metadata):
         logger.error(f"처방전 데이터 삽입 오류: {str(e)}")
         await conn.rollback()
         raise
-
-async def insert_medical_chart(conn, chart_content, file_metadata):
-    sql = '''INSERT INTO medical_charts(content, file_name, file_size, file_type, file_hash)
-             VALUES(?,?,?,?,?)'''
-    try:
-        cursor = await conn.execute(sql, (chart_content,
-                                          file_metadata['file_name'],
-                                          file_metadata['file_size'],
-                                          file_metadata['file_type'],
-                                          file_metadata['file_hash']))
-        await conn.commit()
-        return cursor.lastrowid
-    except Exception as e:
-        logger.error(f"의료 차트 데이터 삽입 오류: {e}")
 
 async def get_prescription_by_hash(conn, file_hash):
     sql = '''SELECT id, file_hash, patient_name, patient_age, prescription_date, medication_name, medication_dosage, prescription_days
@@ -142,27 +133,6 @@ def get_medical_chart_by_hash(conn, file_hash):
         return {'id': row[0], 'content': row[1]} if row else None
     except Error as e:
         logger.error(f"의료 차트 조회 오류: {e}")
-        return None
-
-def get_medical_chart_by_id(conn, id):
-    sql = '''SELECT id, content, file_name, file_size, file_type, file_hash
-             FROM medical_charts WHERE id = ?'''
-    try:
-        c = conn.cursor()
-        c.execute(sql, (id,))
-        row = c.fetchone()
-        if row:
-            return {
-                'id': row[0],
-                'content': row[1],
-                'file_name': row[2],
-                'file_size': row[3],
-                'file_type': row[4],
-                'file_hash': row[5]
-            }
-        return None
-    except Error as e:
-        logger.error(f"ID로 의료 차트 조회 오류: {e}")
         return None
 
 async def get_drug_info_by_name(conn, 품목명):
@@ -377,4 +347,16 @@ async def insert_medical_chart_from_prescription(conn, patient_id, content):
         return cursor.lastrowid
     except Exception as e:
         logger.error(f"의료 차트 저장 오류: {e}")
+        raise
+
+async def insert_voice_medical_chart(conn, patient_id, content):
+    sql = '''INSERT INTO voice_medical_charts (patient_id, content)
+             VALUES (?, ?)'''
+    try:
+        cursor = await conn.execute(sql, (patient_id, content))
+        await conn.commit()
+        logger.info(f"환자 ID {patient_id}의 음성 진료 차트가 성공적으로 저장되었습니다.")
+        return cursor.lastrowid
+    except Exception as e:
+        logger.error(f"음성 진료 차트 저장 오류: {e}")
         raise
